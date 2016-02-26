@@ -95,7 +95,7 @@ public class EnemyController : MonoBehaviour, IKillableObject
         // Equip default melee weapon
         gunControl.Equip("Claw");
         gunControl.GunRange = attackRange;
-        
+
         // Początkowa animacja spawnu zapewnia potworowi nieśmiertelność za pomocą flagi IsSpawned ustawionej na false
         IsSpawned = false;
 
@@ -122,6 +122,7 @@ public class EnemyController : MonoBehaviour, IKillableObject
                 else
                 {
                     // Set nav agent destination to target's position
+                    anim.SetBool("Walk", true);
                     navAgent.Resume();
                     navAgent.SetDestination(Target.transform.position);
                 }
@@ -198,7 +199,7 @@ public class EnemyController : MonoBehaviour, IKillableObject
     private void Hit(GameObject target)
     {
         // Shoot from Enemy's position to target's position
-        int shotSuccessful = gunControl.Shoot(transform, Target.transform.position + new Vector3(0, GetComponent<CapsuleCollider>().bounds.extents.y, 0));
+        int shotSuccessful = gunControl.Shoot(transform, target.transform.position);
 
         // Fire animation
         if (shotSuccessful == 1)
@@ -213,19 +214,19 @@ public class EnemyController : MonoBehaviour, IKillableObject
     /// <returns></returns>
     private bool CheckIfTargetIsInRange(GameObject target, float attackRange)
     {
-        Vector3 raycastDestination = target.transform.position - transform.position + new Vector3(0, GetComponent<CapsuleCollider>().bounds.extents.y, 0);
-        bool inRange = Physics.Raycast(transform.position, raycastDestination, attackRange, 1 << target.layer);
+        Vector3 raycastDestination = target.transform.position - transform.position;
+        RaycastHit hit;
+        Physics.Raycast(transform.position, raycastDestination, out hit, Mathf.Infinity, 1 << target.layer);
+        bool inRange = (hit.distance <= attackRange) ? true : false;
 
         if (inRange)
         {
-            // Target is in range - set animation boolean so it stops walking animation
-            StopNavigationMovement();
+            // Target is in range
             return true;
         }
         else
         {
-            // Target is not in range - set animation boolean so it continues the walking animation
-            anim.SetBool("Walk", true);
+            // Target is not in range
             return false;
         }
     }

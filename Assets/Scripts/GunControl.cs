@@ -183,7 +183,7 @@ public class GunControl : MonoBehaviour
             }
         }
         else
-            return -1;
+            return -2;
 
         //  Spawn Line Renderer to obtain this cool effect of briefly showing trajectories of bullets
         if (targetHit == false)

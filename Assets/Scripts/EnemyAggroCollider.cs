@@ -24,9 +24,6 @@ public class EnemyAggroCollider : MonoBehaviour
 
     void Update()
     {
-        // If there is no target for the enemy find one
-        //if (enemyController.Target == null)
-        //{
         // Find suitable targets and store them in list of game objects
         List<GameObject> targetsDetected = FindTargetsInsideSphere(colliderCenter, colliderRadius, enemyLayerMask);
 
@@ -36,7 +33,6 @@ public class EnemyAggroCollider : MonoBehaviour
         // Set target of EnemyController to closestEnemy
         if (closestEnemy != null)
             enemyController.Target = closestEnemy;
-        //}
     }
 
     /// <summary>

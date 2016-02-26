@@ -143,7 +143,7 @@ public class GameManager : MonoBehaviour, IWeaponList, IBuildingsList
     {
         Debug.LogError("Game over!");
     }
-    
+
     // Building that is built in scene structure
     private struct BuildingInScene
     {
