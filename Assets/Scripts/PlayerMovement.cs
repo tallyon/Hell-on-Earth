@@ -36,6 +36,10 @@ public class PlayerMovement : MonoBehaviour
         {
             playerController.HandleLeftMouseButtonClick(buildMode: buildController.state == BuildController.State.CLOSED ? false : true);
         }
+
+        // ESC to quit
+        if (Input.GetKeyDown(KeyCode.Escape))
+            Application.Quit();
         // ***************************************
 
         // ***************************************
