@@ -141,6 +141,7 @@ public class GameManager : MonoBehaviour, IWeaponList, IBuildingsList
 
     public void GameOver()
     {
+        Application.Quit();
         Debug.LogError("Game over!");
     }
 
