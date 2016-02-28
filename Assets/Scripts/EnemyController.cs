@@ -96,7 +96,7 @@ public class EnemyController : MonoBehaviour, IKillableObject
         gunControl.Equip("Claw");
         gunControl.GunRange = attackRange;
 
-        // Początkowa animacja spawnu zapewnia potworowi nieśmiertelność za pomocą flagi IsSpawned ustawionej na false
+        // IsSpawned flag makes spawning enemy invincible. Only after spawn animation sets it to true the enemy can be harmed and will act
         IsSpawned = false;
 
         // Set HP
@@ -177,7 +177,7 @@ public class EnemyController : MonoBehaviour, IKillableObject
         if (IsAlive) return;
 
         // DEBUG
-        Debug.Log(name + " died!");
+        //Debug.Log(name + " died!");
         // Destroy HP in UI
         Destroy(HPUI);
         // Destroy enemy on hit

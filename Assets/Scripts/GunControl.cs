@@ -133,8 +133,6 @@ public class GunControl : MonoBehaviour
             // Decrement ammo by 1
             int prevAmmo = gun.CurrentAmmo;
             gun.CurrentAmmo--;
-            // DEBUG
-            Debug.Log(Time.frameCount + ": Decrementing ammo from " + prevAmmo + " to " + gun.CurrentAmmo);
 
             // If player update UI
             if (isPlayer)
@@ -173,7 +171,8 @@ public class GunControl : MonoBehaviour
             IKillableObject objectHit = hit.transform.gameObject.GetComponent<IKillableObject>();
             if (objectHit.IsSpawned)
             {
-                Debug.Log("Trafiono: " + hit.transform.name);
+                // DEBUG
+                //Debug.Log("Trafiono: " + hit.transform.name);
                 hit.transform.gameObject.GetComponent<IKillableObject>().OnReceiveDamage(gun.Damage);
                 targetHit = true;
             }

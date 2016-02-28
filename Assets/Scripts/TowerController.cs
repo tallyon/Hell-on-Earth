@@ -90,7 +90,8 @@ public class TowerController : MonoBehaviour, IKillableObject
     /// <returns></returns>
     public void OnReceiveDamage(int dmg)
     {
-        Debug.Log("Tower " + name + " hit for " + dmg + " damage.");
+        // DEBUG
+        //Debug.Log("Tower " + name + " hit for " + dmg + " damage.");
 
         CurrentHP -= dmg;
         UpdateUI();

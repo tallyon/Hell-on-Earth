@@ -103,7 +103,8 @@ public class BuildController : MonoBehaviour
         bool canBuildOnTile = !floorHighlight.GetComponent<FloorHighlightColliderCheck>().collided;
         if (!canBuildOnTile)
         {
-            Debug.Log("CAN'T BUILD THERE!");
+            // DEBUG
+            //Debug.Log("CAN'T BUILD THERE!");
             return;
         }
 
@@ -138,7 +139,8 @@ public class BuildController : MonoBehaviour
         // Instantiate floor highlight
         floorHighlight = (GameObject)Instantiate(prefab_FloorHighlight, new Vector3(0, 0, 0), Quaternion.identity);
 
-        Debug.Log("Build mode started.");
+        // DEBUG
+        //Debug.Log("Build mode started.");
     }
 
     private void StopBuilding()
@@ -157,7 +159,8 @@ public class BuildController : MonoBehaviour
         // Destroy selected building
         selectedBuilding = null;
 
-        Debug.Log("Build mode stopped.");
+        // DEBUG
+        //Debug.Log("Build mode stopped.");
     }
     #endregion
 }

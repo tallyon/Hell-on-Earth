@@ -28,13 +28,13 @@ public class CameraController : MonoBehaviour
     {
         // Transition camera to shooter position
         animator.Play("CameraToShooterMode");
-        Debug.Log("Change to shooter mode");
+        //Debug.Log("Change to shooter mode");
     }
 
     public void ChangeToBuilder()
     {
         // Transition camera to builder position
         animator.Play("CameraToBuildMode");
-        Debug.Log("Change to builder mode");
+        //Debug.Log("Change to builder mode");
     }
 }
